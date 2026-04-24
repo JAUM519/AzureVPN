@@ -1,0 +1,46 @@
+<AzVpnProfile xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/">
+  <any xmlns:d2p1="http://schemas.datacontract.org/2004/07/System.Xml" i:nil="true" />
+  <clientauth>
+    <aad i:nil="true" />
+    <cert>
+      <hash i:nil="true" />
+      <issuer>04fec7e5d51dd55ba5642cff2b1484c58d5186bc</issuer>
+    </cert>
+    <type>cert</type>
+    <usernamepass i:nil="true" />
+  </clientauth>
+  <clientconfig>
+    <dnsservers>
+      <DnsServerEntry>
+        <dnsserver>10.10.1.10</dnsserver>
+      </DnsServerEntry>
+      <DnsServerEntry>
+        <dnsserver>10.10.1.11</dnsserver>
+      </DnsServerEntry>
+    </dnsservers>
+    <excluderoutes i:nil="true" />
+    <includeroutes i:nil="true" />
+  </clientconfig>
+  <name>vnet-cuerovilamedina</name>
+  <protocolconfig>
+    <sslprotocolConfig>
+      <transportprotocol>tcp</transportprotocol>
+    </sslprotocolConfig>
+  </protocolconfig>
+  <serverlist>
+    <ServerEntry>
+      <displayname i:nil="true" />
+      <fqdn>azuregateway-73960077-0074-469d-9953-db8818042557-030397751765.vpn.azure.com</fqdn>
+    </ServerEntry>
+  </serverlist>
+  <servervalidation>
+    <Cert>
+      <hash>DF3C24F9BFD666761B268073FE06D1CC8D4F82A4</hash>
+      <issuer i:nil="true" />
+    </Cert>
+    <serversecret>5571f676c7ad1f42c456dc38f8714ac8ef6c8ba6e84acd842ffb2d6ce44a2512da6ba4793d942ff38be6bed9dfaa120de81ebd2fb20a7dbef672e7d5643ca0131ad9197811c0aaa42585b6843ec0cec798663e4d82a40d5bd579f49bf48e33c761085538af6afe8f3eec02a3df373a47e1bc0cd483f3178ce131d859c13f9e403c2df5898dc9861a11cf194ff525ecb8868615f5817201654edbc9a94e1cffff06fc6a79d4d38af41016fe3b2eb08f486375081a6a8ba2722169aed054aeb3c75b1e6d3c61e9d79e15c4e811832d8f19ce0cd9711f7fdefb4e076f01c5ff4c67d1e8e8df2b573a9f7a216f66117e38bb55dda525882f545a005c40a20c5e67be</serversecret>
+    <type>cert</type>
+    <usepinnedroot>true</usepinnedroot>
+  </servervalidation>
+  <version>1</version>
+</AzVpnProfile>
