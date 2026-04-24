@@ -1,1 +1,54 @@
 azuregateway-73960077-0074-469d-9953-db8818042557-030397751765.vpn.azure.com
+
+$ProfileName = "AzureVPN-Device"
+$Server = "azuregateway-7396077-004-469d-9953-db8818042557-030397751765.vpn.azure.com"
+
+$ProfileXML = @"
+<VPNProfile>
+  <NativeProfile>
+    <Servers>$Server</Servers>
+    <NativeProtocolType>IKEv2</NativeProtocolType>
+    <Authentication>
+      <MachineMethod>Certificate</MachineMethod>
+    </Authentication>
+    <RoutingPolicyType>ForceTunnel</RoutingPolicyType>
+  </NativeProfile>
+  <AlwaysOn>true</AlwaysOn>
+  <DeviceTunnel>true</DeviceTunnel>
+  <TrustedNetworkDetection>cuerovilamedina.com</TrustedNetworkDetection>
+</VPNProfile>
+"@
+
+$ProfileXML = $ProfileXML.Replace("<", "&lt;").Replace(">", "&gt;").Replace('"', "&quot;")
+
+$NamespaceName = "root\cimv2\mdm\dmmap"
+$ClassName = "MDM_VPNv2_01"
+$Session = New-CimSession
+
+$NewInstance = New-Object Microsoft.Management.Infrastructure.CimInstance $ClassName, $NamespaceName
+$NewInstance.CimInstanceProperties.Add(
+    [Microsoft.Management.Infrastructure.CimProperty]::Create(
+        "ParentID",
+        "./Vendor/MSFT/VPNv2",
+        "String",
+        "Key"
+    )
+)
+$NewInstance.CimInstanceProperties.Add(
+    [Microsoft.Management.Infrastructure.CimProperty]::Create(
+        "InstanceID",
+        $ProfileName,
+        "String",
+        "Key"
+    )
+)
+$NewInstance.CimInstanceProperties.Add(
+    [Microsoft.Management.Infrastructure.CimProperty]::Create(
+        "ProfileXML",
+        $ProfileXML,
+        "String",
+        "Property"
+    )
+)
+
+New-CimInstance -CimSession $Session -Namespace $NamespaceName -ClassName $ClassName -CimInstance $NewInstance
